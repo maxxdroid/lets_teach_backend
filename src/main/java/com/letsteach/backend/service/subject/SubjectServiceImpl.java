@@ -36,7 +36,18 @@ public class SubjectServiceImpl implements SubjectService {
 
     @Override
     public List<SubjectDto> getCore() {
-        return List.of();
+        List<Subject> subjects = subjectRepository.findByType("core");
+        return subjects.stream().map(
+                subject -> SubjectDto
+                        .builder()
+                        .id(subject.getId())
+                        .name(subject.getName())
+                        .image(subject.getImage())
+                        .time(subject.getTime())
+                        .teacher(subject.getTeacher())
+                        .prices(subject.getPrices())
+                        .students(subject.getStudents())
+                        .build()).toList();
     }
 
 //    @Override

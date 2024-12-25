@@ -22,7 +22,7 @@ public class SubjectController {
 
     @GetMapping("core")
     public ResponseEntity<List<SubjectDto>> getCoreSubjects() {
-        return ResponseEntity.ok(subjectService.findAll());
+        return ResponseEntity.ok(subjectService.getCore());
     }
 
     @GetMapping("elective")
