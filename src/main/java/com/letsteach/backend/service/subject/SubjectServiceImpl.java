@@ -2,7 +2,6 @@ package com.letsteach.backend.service.subject;
 
 import com.letsteach.backend.dto.SubjectDto;
 import com.letsteach.backend.entity.Subject;
-import com.letsteach.backend.entity.Teacher;
 import com.letsteach.backend.repository.SubjectRepository;
 import com.letsteach.backend.repository.TeacherRepository;
 import com.letsteach.backend.utility.TeacherFunctions;
@@ -50,31 +49,19 @@ public class SubjectServiceImpl implements SubjectService {
                         .build()).toList();
     }
 
-//    @Override
-//    public SubjectDto create(SubjectDto subjectDto) {
-//        Teacher teacher = teacherRepository.findById(subjectDto.getTeacher().getId()).orElse(null);
-//        if (teacher == null) {
-//            return null;
-//        }
-//        Subject subject = Subject
-//                .builder()
-//                .name(subjectDto.getName())
-//                .image(subjectDto.getImage())
-//                .time(subjectDto.getTime())
-//                .teacher(teacher)
-//                .prices(subjectDto.getPrices())
-//                .students(subjectDto.getStudents())
-//                .build();
-//        subject = subjectRepository.save(subject);
-//        return SubjectDto
-//                .builder()
-//                .id(subject.getId())
-//                .name(subject.getName())
-//                .image(subject.getImage())
-//                .time(subject.getTime())
-//                .teacher(teacherFunctions.teacherToDto(teacher))
-//                .prices(subject.getPrices())
-//                .students(subject.getStudents())
-//                .build();
-//    }
+    @Override
+    public List<SubjectDto> getElective() {
+        List<Subject> subjects = subjectRepository.findByType("elective");
+        return subjects.stream().map(
+                subject -> SubjectDto
+                        .builder()
+                        .id(subject.getId())
+                        .name(subject.getName())
+                        .image(subject.getImage())
+                        .time(subject.getTime())
+                        .teacher(subject.getTeacher())
+                        .prices(subject.getPrices())
+                        .students(subject.getStudents())
+                        .build()).toList();
+    }
 }

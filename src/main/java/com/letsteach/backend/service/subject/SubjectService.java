@@ -11,5 +11,6 @@ public interface SubjectService {
 
     List<SubjectDto> getCore();
 
-//    SubjectDto create(SubjectDto subjectDto);
+    List<SubjectDto> getElective();
+
 }

@@ -27,7 +27,7 @@ public class SubjectController {
 
     @GetMapping("elective")
     public ResponseEntity<List<SubjectDto>> getElectiveSubjects() {
-        return ResponseEntity.ok(subjectService.findAll());
+        return ResponseEntity.ok(subjectService.getElective());
     }
 
 }
