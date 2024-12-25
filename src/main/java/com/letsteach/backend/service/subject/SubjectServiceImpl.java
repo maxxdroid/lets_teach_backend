@@ -34,6 +34,11 @@ public class SubjectServiceImpl implements SubjectService {
                         .build()).toList();
     }
 
+    @Override
+    public List<SubjectDto> getCore() {
+        return List.of();
+    }
+
 //    @Override
 //    public SubjectDto create(SubjectDto subjectDto) {
 //        Teacher teacher = teacherRepository.findById(subjectDto.getTeacher().getId()).orElse(null);

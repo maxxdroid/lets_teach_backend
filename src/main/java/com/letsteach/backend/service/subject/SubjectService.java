@@ -9,5 +9,7 @@ import java.util.List;
 public interface SubjectService {
     List<SubjectDto> findAll();
 
+    List<SubjectDto> getCore();
+
 //    SubjectDto create(SubjectDto subjectDto);
 }
